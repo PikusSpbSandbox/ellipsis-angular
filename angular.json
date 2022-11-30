@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ellipsis-angular": {
+    "ellipsis-angular-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ellipsis-angular",
+            "outputPath": "dist/ellipsis-angular-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ellipsis-angular:build:production"
+              "browserTarget": "ellipsis-angular-demo:build:production"
             },
             "development": {
-              "browserTarget": "ellipsis-angular:build:development"
+              "browserTarget": "ellipsis-angular-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ellipsis-angular:build"
+            "browserTarget": "ellipsis-angular-demo:build"
           }
         },
         "test": {
@@ -96,6 +96,39 @@
               "src/styles.less"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "ellipsis-angular": {
+      "projectType": "library",
+      "root": "projects/ellipsis-angular",
+      "sourceRoot": "projects/ellipsis-angular/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ellipsis-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ellipsis-angular/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ellipsis-angular/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ellipsis-angular/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }
