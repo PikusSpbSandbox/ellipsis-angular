@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { EllipsisAngularComponent } from './ellipsis-angular.component';
+import { EllipsisAngularDirective } from './ellipsis-angular.directive';
 
 
 
 @NgModule({
   declarations: [
-    EllipsisAngularComponent
+    EllipsisAngularDirective
   ],
   imports: [
   ],
   exports: [
-    EllipsisAngularComponent
+    EllipsisAngularDirective
   ]
 })
 export class EllipsisAngularModule { }
