@@ -1,27 +1,73 @@
-# EllipsisAngular
+# ellipsis-angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+## Live demo
 
-## Development server
+Sample demo [page](https://pikus.spb.ru/code)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## What is this?
 
-## Code scaffolding
+Angular 15+ directive to truncate multi-line text to the visible height. Unlike most ellipsis components this may be used
+with HTML content also. The end of the visible text is appended with an ellipsis symbol `…`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instalation
 
-## Build
+```
+npm install ellipsis-angular
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Add module import to your Angular application:
+```
+import { EllipsisAngularModule } from 'dist/ellipsis-angular';
+...
 
-## Running unit tests
+@NgModule({
+  imports: [
+    BrowserModule,
+    ...
+    
+    EllipsisAngularModule
+  ],
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
 
-## Running end-to-end tests
+Start using directive:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+<div ellipsis-angular>
+...
+</div>
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Features
+
+There are two options available for using ellipsis-angular.
+
+### 1. Static content
+You may use it with static content without any additional settings:
+
+```
+<div ellipsis-angular>
+<!-- Static HTML content goes here ---> 
+</div>
+
+```
+There will be ellipsis added if needed once component loads or a browser window resizes.
+But it will not react to any inner content change.
+
+### 2. Dynamic content
+You may provide [innerHTML] parameter if you want ellipsis to react on inner HTML content
+change:
+```
+<div ellipsis-angular [innerHTML]="someHTMLStringVariable"></div>
+
+```
+This way ellipsis will render someHTMLStringVariable html content and will also react on
+its changes.
+
+## Credits
+This component is inspired by [dibari/angular-ellipsis](https://github.com/dibari/angular-ellipsis)
+AngularJS directive made by Eric Di Bari (dibari). Please see this author on
+[GitHub](https://github.com/dibari).
+Some code samples are reused in this directive under MIT License.
+

@@ -1,6 +1,29 @@
 {
   "name": "ellipsis-angular",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "A simple ellipsis directive for Angular 15+ that cuts content and adds '…' character if HTML content is overflowed.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PikusSpbSandbox/ellipsis-angular"
+  },
+  "author": {
+    "name": "Petr Savelev",
+    "email": "petr.savelev.direct@gmail.com"
+  },
+  "homepage": "https://pikus.spb.ru/code",
+  "keywords": [
+    "ellipsis",
+    "Angular",
+    "truncate",
+    "HTML",
+    "text",
+    "Directive",
+    "Component"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PikusSpbSandbox/ellipsis-angular/pulls"
+  },
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"
