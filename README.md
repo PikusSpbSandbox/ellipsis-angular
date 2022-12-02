@@ -1,4 +1,5 @@
 # ellipsis-angular
+<img src="https://badgen.net/bundlephobia/min/ellipsis-angular" />
 
 ## Live demo
 
