@@ -2,7 +2,7 @@
 
 ## Live demo
 
-Sample demo [page](https://pikus.spb.ru/code)
+Sample demo [page](https://pikus.spb.ru/code) (under contruction)
 
 ## What is this?
 
