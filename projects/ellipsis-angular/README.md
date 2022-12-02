@@ -17,7 +17,7 @@ npm install ellipsis-angular
 
 Add module import to your Angular application:
 ```
-import { EllipsisAngularModule } from 'dist/ellipsis-angular';
+import { EllipsisAngularModule } from 'ellipsis-angular';
 ...
 
 @NgModule({
