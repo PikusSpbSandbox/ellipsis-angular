@@ -5,9 +5,10 @@ import {
   ElementRef,
   HostListener,
   Input,
-  SecurityContext, SimpleChanges
+  SecurityContext,
+  SimpleChanges,
 } from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Directive({
   selector: '[ellipsis-angular]',
@@ -15,16 +16,14 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class EllipsisAngularDirective implements OnChanges, AfterViewInit {
   @Input() innerHTML?: string;
 
-  private ellipsisSymbol = '&hellip;'
+  private ellipsisSymbol = '&hellip;';
   private ellipsisSeparator = ' ';
   private ellipsisSeparatorReg = new RegExp('[' + this.ellipsisSeparator + ']+', 'gm');
   private unclosedHTMLTagMatcher = /<[^>]*$/;
   private lastWindowResizeWidth: number = 0;
   private lastWindowResizeHeight: number = 0;
 
-  constructor(private el: ElementRef,
-              private sanitizer: DomSanitizer) {
-  }
+  constructor(private el: ElementRef, private sanitizer: DomSanitizer) {}
 
   private trustAsHtml(text: string): string | null {
     return this.sanitizer.sanitize(SecurityContext.HTML, text);
@@ -71,9 +70,12 @@ export class EllipsisAngularDirective implements OnChanges, AfterViewInit {
             if (range <= 1) {
               break;
             } else {
-              if (this.fastIsOverflowing(
-                this.getTextUpToIndex(trustedHtml, separatorLocations, textCutOffIndex) + this.ellipsisSymbol,
-                initialMaxHeight, initialMaxWidth)
+              if (
+                this.fastIsOverflowing(
+                  this.getTextUpToIndex(trustedHtml, separatorLocations, textCutOffIndex) + this.ellipsisSymbol,
+                  initialMaxHeight,
+                  initialMaxWidth
+                )
               ) {
                 // The match was in the lower half, excluding the previous upper part
                 upperBound = textCutOffIndex;
@@ -84,7 +86,8 @@ export class EllipsisAngularDirective implements OnChanges, AfterViewInit {
             }
           }
           // We finished the search now we set the new text through the correct trustedHtml api
-          domElement.innerHTML = this.getTextUpToIndex(trustedHtml, separatorLocations, textCutOffIndex) + this.ellipsisSymbol;
+          domElement.innerHTML =
+            this.getTextUpToIndex(trustedHtml, separatorLocations, textCutOffIndex) + this.ellipsisSymbol;
 
           //Set data-overflow class on element for css stying
           domElement.classList.add('ellipsis-angular-overflowed');
@@ -100,13 +103,13 @@ export class EllipsisAngularDirective implements OnChanges, AfterViewInit {
 
   private isOverflowed(): boolean {
     const elDomNode = this.el.nativeElement;
-    return (elDomNode.scrollHeight > elDomNode.clientHeight) || (elDomNode.scrollWidth > elDomNode.clientWidth);
+    return elDomNode.scrollHeight > elDomNode.clientHeight || elDomNode.scrollWidth > elDomNode.clientWidth;
   }
 
   private fastIsOverflowing(text: string, initialMaxHeight: number, initialMaxWidth: number): boolean {
     const elDomNode = this.el.nativeElement;
     elDomNode.innerHTML = text;
-    return (elDomNode.scrollHeight > initialMaxHeight) || (elDomNode.scrollWidth > initialMaxWidth);
+    return elDomNode.scrollHeight > initialMaxHeight || elDomNode.scrollWidth > initialMaxWidth;
   }
 
   private getTextUpToIndex(htmlText: string, separatorLocations: number[], index: number): string {

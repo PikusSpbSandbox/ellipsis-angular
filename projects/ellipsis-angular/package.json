@@ -24,11 +24,17 @@
   "bugs": {
     "url": "https://github.com/PikusSpbSandbox/ellipsis-angular/pulls"
   },
+  "scripts": {
+    "prettier": "prettier --write --config ./.prettierrc \"src/lib/*.ts\""
+  },
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.0"
   }
 }
