@@ -22,8 +22,13 @@ export class EllipsisAngularDirective implements OnChanges, AfterViewInit {
   private unclosedHTMLTagMatcher = /<[^>]*$/;
   private lastWindowResizeWidth: number = 0;
   private lastWindowResizeHeight: number = 0;
+  private resizeObserver!: ResizeObserver;
 
-  constructor(private el: ElementRef, private sanitizer: DomSanitizer) {}
+  constructor(private el: ElementRef, private sanitizer: DomSanitizer) {
+    this.resizeObserver = new ResizeObserver(() => {
+      this.ellipsis();
+    });
+  }
 
   private trustAsHtml(text: string): string | null {
     return this.sanitizer.sanitize(SecurityContext.HTML, text);
@@ -137,5 +142,6 @@ export class EllipsisAngularDirective implements OnChanges, AfterViewInit {
       this.innerHTML = this.el.nativeElement.innerHTML;
       this.ellipsis();
     }
+    this.resizeObserver.observe(this.el.nativeElement);
   }
 }

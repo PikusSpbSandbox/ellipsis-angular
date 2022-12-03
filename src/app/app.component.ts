@@ -1,5 +1,7 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+
+const SIZE_CLASSES = ['small', 'medium', 'large'];
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,8 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements AfterViewInit {
+  @ViewChild('demo1') demo1!: ElementRef;
+
   title = 'ellipsis-angular-demo';
   html = '';
 
@@ -34,6 +38,9 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.fetchFacts();
-    setInterval(() => this.fetchFacts(), 10000)
+    setInterval(() => this.fetchFacts(), 10000);
+    setInterval(() => {
+      this.demo1.nativeElement.className = SIZE_CLASSES[Math.trunc(Math.random() * 3)];
+    }, 5000);
   }
 }
