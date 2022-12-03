@@ -1,6 +1,6 @@
 {
   "name": "ellipsis-angular",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A simple ellipsis directive for Angular 15+ that cuts content and adds '…' character if HTML content is overflowed.",
   "repository": {
     "type": "git",

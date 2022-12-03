@@ -3,7 +3,7 @@
 
 ## Live demo
 
-Sample demo [page](https://pikus.spb.ru/code) (under construction)
+Sample demo [page](https://pikus.spb.ru/code/ellipsis-angular-demo)
 
 ## What is this?
 
