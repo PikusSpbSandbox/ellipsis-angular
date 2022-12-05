@@ -66,6 +66,10 @@ change:
 This way ellipsis will render someHTMLStringVariable html content and will also react on
 its changes.
 
+## Browser compatibility
+This directive is using [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) to detect container size changes.
+Please see [can I use](https://caniuse.com/resizeobserver) site for the browser support of this feature.
+
 ## Credits
 This component is inspired by [dibari/angular-ellipsis](https://github.com/dibari/angular-ellipsis)
 AngularJS directive made by Eric Di Bari (dibari). Please see this author on
